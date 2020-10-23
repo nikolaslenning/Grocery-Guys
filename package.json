@@ -1,0 +1,19 @@
+{
+  "name": "grocery-guys",
+  "version": "1.0.0",
+  "description": "Grocery Delivery App",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikolaslenning/Grocery-Guys.git"
+  },
+  "author": "Nikolas Lenning, Collin Porter, Christopher Rojas, & Scott Woodland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikolaslenning/Grocery-Guys/issues"
+  },
+  "homepage": "https://github.com/nikolaslenning/Grocery-Guys#readme"
+}
