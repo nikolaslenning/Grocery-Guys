@@ -31,12 +31,16 @@
             2
         ],
         "parserOptions": {
-            "ecmaVersion": 2017
+            "ecmaVersion": 6,
+            "sourceType": "module",
+            "ecmaFeatures": {
+                "jsx": true
+            }
         },
-        // "env": {
-        //     "es6": true
+        // "parserOptions": {
+        //     "ecmaVersion": 2017
         // },
-        // "linebreak-style": [
+            // "linebreak-style": [
         //     // "error",
         //     // "unix"
         // ],
