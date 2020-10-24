@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Grocery Delievery App",
   "main": "server.js",
- 
+  "scripts": {
+    "lint": "eslint \"**/*.js\"",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nikolaslenning/Grocery-Guys.git"
@@ -13,5 +17,16 @@
   "bugs": {
     "url": "https://github.com/nikolaslenning/Grocery-Guys/issues"
   },
-  "homepage": "https://github.com/nikolaslenning/Grocery-Guys#readme"
+  "homepage": "https://github.com/nikolaslenning/Grocery-Guys#readme",
+  "devDependencies": {
+    "eslint": "^7.12.0",
+    "nodemon": "2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  }
 }
