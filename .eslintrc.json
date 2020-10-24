@@ -32,10 +32,7 @@
         ],
         "parserOptions": {
             "ecmaVersion": 6,
-            "sourceType": "module",
-            "ecmaFeatures": {
-                "jsx": true
-            }
+            "sourceType": "module"            
         },
         // "parserOptions": {
         //     "ecmaVersion": 2017
