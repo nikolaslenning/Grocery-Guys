@@ -2,7 +2,8 @@
     "env": {
         "browser": true,
         "commonjs": true,
-        "node": true
+        "node": true,
+        "es6": true
     },
     "rules": {
         "no-duplicate-case": "error",
@@ -30,7 +31,7 @@
             2
         ],
         "parserOptions": {
-            "ecmaVersion": 6
+            "ecmaVersion": 2017
         },
         // "env": {
         //     "es6": true
