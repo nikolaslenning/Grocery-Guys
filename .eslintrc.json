@@ -5,6 +5,9 @@
         "node": true,
         "es6": true
     },
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
     "rules": {
         "no-duplicate-case": "error",
         "no-empty": "error",
@@ -30,13 +33,11 @@
             "error",
             2
         ],
-        "parserOptions": {
-            "ecmaVersion": 6,
-            "sourceType": "module"            
-        },
         // "parserOptions": {
-        //     "ecmaVersion": 2017
+        //     "ecmaVersion": 6,
+        //     "sourceType": "module"            
         // },
+       
             // "linebreak-style": [
         //     // "error",
         //     // "unix"
