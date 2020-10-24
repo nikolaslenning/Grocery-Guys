@@ -2,10 +2,8 @@
   "name": "grocery-guys",
   "version": "1.0.0",
   "description": "Grocery Delievery App",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest"
-  },
+  "main": "server.js",
+ 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nikolaslenning/Grocery-Guys.git"
