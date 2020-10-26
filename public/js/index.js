@@ -1,26 +1,12 @@
-// var imageAPI = "https://api.imgur.com/3/album/" + albumID + "/images";
-
-// $.ajax({
-//   url: imageAPI,
-//   type: 'POST',
-//   dataType: 'json',
-//   success: function(data) {
-
-//     alert(data[0].link);
-
-//   },
-//   error: function() {
-//     console.log("ERRORZ");
-//   },
-//   beforeSend: setHeader
-// });
-
 // https://gist.github.com/bmcbride/7577e6aed5ce962776ca
 $("document").ready(function () {
 
   $('input[type=file]').on("change", function () {
 
     var $files = $(this).get(0).files;
+    console.log($files);
+    console.log($files[0]);
+    console.log($files[0].name);
 
     if ($files.length) {
 
@@ -31,6 +17,7 @@ $("document").ready(function () {
       }
 
       // API key === clientId
+      let albumID = "cMVVE5y";
       var apiUrl = 'https://api.imgur.com/3/image';
       var apiKey = '4bd8e2fc19460e6';
 
@@ -43,6 +30,7 @@ $("document").ready(function () {
         "url": apiUrl,
         "method": "POST",
         "datatype": "json",
+        "data": {image: $files[0].name, album: albumID},
         "headers": {
           "Authorization": "Client-ID " + apiKey
         },
@@ -54,7 +42,7 @@ $("document").ready(function () {
         },
         success: function (res) {
           console.log(res.data.link);
-          $('body').append('<img src="' + res.data.link + '" />');
+          $('.imgBody').empty().append('<img src="' + res.data.link + '" />');
         },
         error: function () {
           alert("Failed");
