@@ -35,6 +35,7 @@ module.exports = function(app) {
       neutral: emote.neutral,
       sadness: emote.sadness,
       surprise: emote.surprise,
+      UserId
 
     }).then(function(dbEmote) {
       res.json(dbEmote);

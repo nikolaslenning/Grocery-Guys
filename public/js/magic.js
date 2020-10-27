@@ -54,7 +54,7 @@ function face(sourceImageUrl) {
 }
 
 
-// Face analysis code for analyzing URL
+// Face analysis code for analyzing URL on Upload
 // https://gist.github.com/bmcbride/7577e6aed5ce962776ca
 $("document").ready(function () {
 
@@ -164,7 +164,8 @@ $("document").ready(function () {
           happiness: data[0].faceAttributes.emotion.happiness,
           neutral: data[0].faceAttributes.emotion.neutral,
           sadness: data[0].faceAttributes.emotion.sadness,
-          surprise: data[0].faceAttributes.emotion.surprise
+          surprise: data[0].faceAttributes.emotion.surprise,
+          // UserId:
         };
         $.post("/api/emote", newEmote)
           // on success, run this callback
