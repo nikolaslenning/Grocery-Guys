@@ -30,7 +30,7 @@ $("document").ready(function () {
         "url": apiUrl,
         "method": "POST",
         "datatype": "json",
-        "data": {image: $files[0].name, album: albumID},
+        "data": { image: $files[0].name, album: albumID },
         "headers": {
           "Authorization": "Client-ID " + apiKey
         },
@@ -53,4 +53,62 @@ $("document").ready(function () {
       });
     }
   });
+
+
+  // Face API Script
+  $('.processButton').on("click", function () {
+
+    var subscriptionKey = "76e79cc95d1e4b18be961bc9329ae3e5";
+    var uriBase =
+      "https://emote.cognitiveservices.azure.com//face/v1.0/detect";
+
+    // Request parameters.
+    var params = {
+      "detectionModel": "detection_01",
+      "returnFaceAttributes": "age,gender,emotion,noise",
+      "returnFaceId": "false"
+    };
+
+    // Display the image.
+    var sourceImageUrl = document.getElementById("inputImage").value;
+    document.querySelector("#sourceImage").src = sourceImageUrl;
+
+    // Perform the REST API call.
+    $.ajax({
+      url: uriBase + "?" + $.param(params),
+
+      // Request headers.
+      beforeSend: function (xhrObj) {
+        xhrObj.setRequestHeader("Content-Type", "application/json");
+        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+      },
+
+      type: "POST",
+
+      // Request body.
+      data: '{"url": ' + '"' + sourceImageUrl + '"}',
+    })
+
+      .done(function (data) {
+        // Show formatted JSON on webpage.
+        console.log(data);
+        console.log(data[0].faceAttributes);
+        console.log(data[0].faceAttributes.emotion);
+        console.log(data[0].faceAttributes.emotion.anger);
+        $("#responseTextArea").val(JSON.stringify(data, null, 2));
+      })
+
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        // Display error message.
+        var errorString = (errorThrown === "") ?
+          "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+        errorString += (jqXHR.responseText === "") ?
+          "" : (jQuery.parseJSON(jqXHR.responseText).message) ?
+            jQuery.parseJSON(jqXHR.responseText).message :
+            jQuery.parseJSON(jqXHR.responseText).error.message;
+        alert(errorString);
+      });
+  }
+
+  );
 });
