@@ -43,8 +43,8 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Emote.associate = function(models) {
-    // We're saying that a Emote should belong to an Author
-    // A Emote can't be created without an Author due to the foreign key constraint
+    // We're saying that a Emote should belong to an User
+    // A Emote can't be created without an User due to the foreign key constraint
     Emote.belongsTo(models.User, {
       foreignKey: {
         allowNull: false

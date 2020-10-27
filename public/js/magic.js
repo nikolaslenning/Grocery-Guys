@@ -1,3 +1,4 @@
+// face function to run face analysis on the image being uploaded
 function face(sourceImageUrl) {
 
   var subscriptionKey = "76e79cc95d1e4b18be961bc9329ae3e5";
@@ -53,7 +54,7 @@ function face(sourceImageUrl) {
 }
 
 
-
+// Face analysis code for analyzing URL
 // https://gist.github.com/bmcbride/7577e6aed5ce962776ca
 $("document").ready(function () {
 
@@ -153,8 +154,27 @@ $("document").ready(function () {
         console.log(data[0].faceAttributes.emotion);
         console.log(data[0].faceAttributes.emotion.contempt);
         $("#responseTextArea").val(JSON.stringify(data, null, 2));
-      })
 
+        var newEmote = {
+          url: sourceImageUrl,
+          anger: data[0].faceAttributes.emotion.anger,
+          contempt: data[0].faceAttributes.emotion.contempt,
+          disgust: data[0].faceAttributes.emotion.disgust,
+          fear: data[0].faceAttributes.emotion.fear,
+          happiness: data[0].faceAttributes.emotion.happiness,
+          neutral: data[0].faceAttributes.emotion.neutral,
+          sadness: data[0].faceAttributes.emotion.sadness,
+          surprise: data[0].faceAttributes.emotion.surprise
+        };
+        $.post("/api/emote", newEmote)
+          // on success, run this callback
+          .then(function (data) {
+            // log the data we found
+            console.log(data);
+            // tell the user we're adding a character with an alert window
+            alert("Adding Emote...");
+          });
+      })
       .fail(function (jqXHR, textStatus, errorThrown) {
         // Display error message.
         var errorString = (errorThrown === "") ?
@@ -169,3 +189,45 @@ $("document").ready(function () {
 
   );
 });
+
+// $("#saveButton").on("click", function (event) {
+//   event.preventDefault();
+
+//   // make a newCharacter obj
+//   var newEmote = {
+//     url: ,
+//     anger: ,
+//     contempt: ,
+//     disgust: ,
+//     fear: ,
+//     happiness: ,
+//     neutral: ,
+//     sadness: ,
+//     surprise:
+//       // name from name input
+//       name: $("#name").val().trim(),
+//     // role from role input
+//     role: $("#role").val().trim(),
+//     // age from age input
+//     age: $("#age").val().trim(),
+//     // points from force-points input
+//     forcePoints: $("#force-points").val().trim()
+//   };
+
+//   // send an AJAX POST-request with jQuery
+//   $.post("/api/new", newEmote)
+//     // on success, run this callback
+//     .then(function (data) {
+//       // log the data we found
+//       console.log(data);
+//       // tell the user we're adding a character with an alert window
+//       alert("Adding Emote...");
+//     });
+
+//   // empty each input box by replacing the value with an empty string
+//   $("#name").val("");
+//   $("#role").val("");
+//   $("#age").val("");
+//   $("#force-points").val("");
+
+// });
