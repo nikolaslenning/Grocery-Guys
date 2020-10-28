@@ -39,6 +39,27 @@ function face(sourceImageUrl) {
       console.log(data[0].faceAttributes.emotion);
       console.log(data[0].faceAttributes.emotion.contempt);
       $("#responseTextArea").val(JSON.stringify(data, null, 2));
+
+      var newEmote = {
+        url: sourceImageUrl,
+        anger: data[0].faceAttributes.emotion.anger,
+        contempt: data[0].faceAttributes.emotion.contempt,
+        disgust: data[0].faceAttributes.emotion.disgust,
+        fear: data[0].faceAttributes.emotion.fear,
+        happiness: data[0].faceAttributes.emotion.happiness,
+        neutral: data[0].faceAttributes.emotion.neutral,
+        sadness: data[0].faceAttributes.emotion.sadness,
+        surprise: data[0].faceAttributes.emotion.surprise,
+
+      };
+      $.post("/api/emote", newEmote)
+        // on success, run this callback
+        .then(function (data) {
+          // log the data we found
+          console.log(data);
+          // tell the user we're adding a character with an alert window
+          alert("Adding Emote...");
+        });
     })
 
     .fail(function (jqXHR, textStatus, errorThrown) {
@@ -165,7 +186,7 @@ $("document").ready(function () {
           neutral: data[0].faceAttributes.emotion.neutral,
           sadness: data[0].faceAttributes.emotion.sadness,
           surprise: data[0].faceAttributes.emotion.surprise,
-          // UserId:
+
         };
         $.post("/api/emote", newEmote)
           // on success, run this callback
