@@ -135,8 +135,9 @@ $("document").ready(function () {
 
 
   // Face API Script
+  //Analyze button click listener
   $('.processButton').on("click", function () {
-
+    //login credentials for Face API
     var subscriptionKey = "76e79cc95d1e4b18be961bc9329ae3e5";
     var uriBase =
       "https://emote.cognitiveservices.azure.com//face/v1.0/detect";
@@ -148,7 +149,7 @@ $("document").ready(function () {
       "returnFaceId": "false"
     };
 
-    // Display the image.
+    // Display the image from URL being Analyzed
     var sourceImageUrl = document.getElementById("inputImage").value;
     document.querySelector("#sourceImage").src = sourceImageUrl;
 
@@ -175,7 +176,7 @@ $("document").ready(function () {
         console.log(data[0].faceAttributes.emotion);
         console.log(data[0].faceAttributes.emotion.contempt);
         $("#responseTextArea").val(JSON.stringify(data, null, 2));
-
+        //Create variabgle to house organized data
         var newEmote = {
           url: sourceImageUrl,
           anger: data[0].faceAttributes.emotion.anger,
@@ -187,7 +188,7 @@ $("document").ready(function () {
           sadness: data[0].faceAttributes.emotion.sadness,
           surprise: data[0].faceAttributes.emotion.surprise,
 
-        };
+        };//Pass in newEmote to POST request
         $.post("/api/emote", newEmote)
           // on success, run this callback
           .then(function (data) {
