@@ -217,6 +217,7 @@ $("document").ready(function () {
 
   );
   // Code That controls delete button in index.handlebars
+  // eslint-disable-next-line no-unused-vars
   $(".delplan").on("click", function(event) {
     // Get the ID from the button.
     // This is shorthand for $(this).attr("data-planid")
