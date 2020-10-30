@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     anger: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,3),
       allowNull: false,
     },
     contempt: {
@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     neutral: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,6),
       allowNull: false,
     },
     sadness: {
@@ -37,9 +37,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     surprise: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,6),
       allowNull: false,
-    }
+    },
+
   });
 
   Emote.associate = function(models) {
@@ -51,6 +52,6 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
   };
-
+  Emote.sync();
   return Emote;
 };
