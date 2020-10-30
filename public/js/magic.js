@@ -75,7 +75,7 @@ function face(sourceImageUrl) {
 }
 
 
-// Face analysis code for analyzing URL on Upload
+//IMGUR upload img into the Ether
 // https://gist.github.com/bmcbride/7577e6aed5ce962776ca
 $("document").ready(function () {
 
@@ -101,7 +101,7 @@ $("document").ready(function () {
 
       var formData = new FormData();
       formData.append("image", $files[0]);
-
+      // Settings to be passed in AJAX call to IMGUR API
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -118,6 +118,7 @@ $("document").ready(function () {
         beforeSend: function () {
           console.log("Uploading");
         },
+        // Logic that handles displaying image uploaded to IMGUR using API
         success: function (res) {
           console.log(res.data.link);
           $('.imgBody').empty().append('<img src="' + res.data.link + '" />');
@@ -127,6 +128,7 @@ $("document").ready(function () {
           alert("Failed");
         }
       };
+      // passing setting variable to ajax call to IMGUR API
       $.ajax(settings).done(function () {
         console.log("Done");
       });
@@ -134,9 +136,10 @@ $("document").ready(function () {
   });
 
 
-  // Face API Script
+  // Face API Script for anyalzying face data
+  //Analyze button click listener
   $('.processButton').on("click", function () {
-
+    //login credentials for Face API
     var subscriptionKey = "76e79cc95d1e4b18be961bc9329ae3e5";
     var uriBase =
       "https://emote.cognitiveservices.azure.com//face/v1.0/detect";
@@ -148,7 +151,7 @@ $("document").ready(function () {
       "returnFaceId": "false"
     };
 
-    // Display the image.
+    // Display the image from URL being Analyzed
     var sourceImageUrl = document.getElementById("inputImage").value;
     document.querySelector("#sourceImage").src = sourceImageUrl;
 
@@ -169,13 +172,13 @@ $("document").ready(function () {
     })
 
       .done(function (data) {
+        // console.log(data);
+        // console.log(data[0].faceAttributes);
+        // console.log(data[0].faceAttributes.emotion);
+        // console.log(data[0].faceAttributes.emotion.contempt);
         // Show formatted JSON on webpage.
-        console.log(data);
-        console.log(data[0].faceAttributes);
-        console.log(data[0].faceAttributes.emotion);
-        console.log(data[0].faceAttributes.emotion.contempt);
         $("#responseTextArea").val(JSON.stringify(data, null, 2));
-
+        //Create variabgle to house organized data
         var newEmote = {
           url: sourceImageUrl,
           anger: data[0].faceAttributes.emotion.anger,
@@ -187,11 +190,14 @@ $("document").ready(function () {
           sadness: data[0].faceAttributes.emotion.sadness,
           surprise: data[0].faceAttributes.emotion.surprise,
 
-        };
-        $.post("/api/emote", newEmote)
+        };//Pass in newEmote variable to POST request
+        $.post("/api/emotes", newEmote)
           // on success, run this callback
           .then(function (data) {
             // log the data we found
+            console.log("newEmote newEmote newEmote newEmote");
+            console.log(newEmote);
+            console.log("data data data data");
             console.log(data);
             // tell the user we're adding a character with an alert window
             alert("Adding Emote...");
@@ -211,45 +217,3 @@ $("document").ready(function () {
 
   );
 });
-
-// $("#saveButton").on("click", function (event) {
-//   event.preventDefault();
-
-//   // make a newCharacter obj
-//   var newEmote = {
-//     url: ,
-//     anger: ,
-//     contempt: ,
-//     disgust: ,
-//     fear: ,
-//     happiness: ,
-//     neutral: ,
-//     sadness: ,
-//     surprise:
-//       // name from name input
-//       name: $("#name").val().trim(),
-//     // role from role input
-//     role: $("#role").val().trim(),
-//     // age from age input
-//     age: $("#age").val().trim(),
-//     // points from force-points input
-//     forcePoints: $("#force-points").val().trim()
-//   };
-
-//   // send an AJAX POST-request with jQuery
-//   $.post("/api/new", newEmote)
-//     // on success, run this callback
-//     .then(function (data) {
-//       // log the data we found
-//       console.log(data);
-//       // tell the user we're adding a character with an alert window
-//       alert("Adding Emote...");
-//     });
-
-//   // empty each input box by replacing the value with an empty string
-//   $("#name").val("");
-//   $("#role").val("");
-//   $("#age").val("");
-//   $("#force-points").val("");
-
-// });
