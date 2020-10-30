@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     anger: {
-      type: DataTypes.DECIMAL(10,3),
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
     contempt: {
@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     neutral: {
-      type: DataTypes.DECIMAL(10,6),
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
     sadness: {
@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     surprise: {
-      type: DataTypes.DECIMAL(10,6),
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
 
