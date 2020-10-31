@@ -172,10 +172,6 @@ $("document").ready(function () {
     })
 
       .done(function (data) {
-        // console.log(data);
-        // console.log(data[0].faceAttributes);
-        // console.log(data[0].faceAttributes.emotion);
-        // console.log(data[0].faceAttributes.emotion.contempt);
         // Show formatted JSON on webpage.
         $("#responseTextArea").val(JSON.stringify(data, null, 2));
         //Create variabgle to house organized data
@@ -218,7 +214,7 @@ $("document").ready(function () {
   );
   // Code That controls delete button in index.handlebars
   // eslint-disable-next-line no-unused-vars
-  $(".delplan").on("click", function(event) {
+  $(".delplan").on("click", function (event) {
     // Get the ID from the button.
     // This is shorthand for $(this).attr("data-planid")
     var id = $(this).data("planid");
@@ -227,7 +223,7 @@ $("document").ready(function () {
     $.ajax("/api/emotes/" + id, {
       type: "DELETE"
     }).then(
-      function() {
+      function () {
         console.log("deleted id ", id);
         // Reload the page to get the updated list
         location.reload();
