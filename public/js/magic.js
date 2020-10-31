@@ -13,7 +13,6 @@ function face(sourceImageUrl) {
   };
 
   // Display the image.
-
   document.querySelector("#sourceImage").src = sourceImageUrl;
 
   // Perform the REST API call.
@@ -52,12 +51,12 @@ function face(sourceImageUrl) {
         surprise: data[0].faceAttributes.emotion.surprise,
 
       };
-      $.post("/api/emote", newEmote)
+      $.post("/api/emotes", newEmote)
         // on success, run this callback
         .then(function (data) {
           // log the data we found
           console.log(data);
-          // tell the user we're adding a character with an alert window
+          // tell the user we're adding an Emote with an alert window
           alert("Adding Emote...");
         });
     })
@@ -73,7 +72,6 @@ function face(sourceImageUrl) {
       alert(errorString);
     });
 }
-
 
 //IMGUR upload img into the Ether
 // https://gist.github.com/bmcbride/7577e6aed5ce962776ca
@@ -195,7 +193,7 @@ $("document").ready(function () {
             console.log(newEmote);
             console.log("data data data data");
             console.log(data);
-            // tell the user we're adding a character with an alert window
+            // tell the user we're adding an Emote with an alert window
             alert("Adding Emote...");
           });
       })

@@ -1,6 +1,7 @@
+// Require 'mysql' package
 var mysql = require("mysql");
 
-
+// Set up connection to JAWS Database
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
@@ -13,6 +14,7 @@ if (process.env.JAWSDB_URL) {
   });
 }
 
+// Run the connection, if err, let user know, if not let user know connection ID 
 connection.connect(function (err) {
   if (err) {
     console.error("error connecting: " + err.stack);

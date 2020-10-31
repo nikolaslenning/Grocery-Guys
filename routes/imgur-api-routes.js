@@ -16,7 +16,7 @@ module.exports = function (app) {
       for (var i = 0; i < dbEmote.length; i += 1) {
         // Get the current emote
         let currentEmote = dbEmote[i].dataValues;
-        // If so, push it into our data.emotes array.
+        // Push it into our data.emotes array.
         data.emotes.push(currentEmote);
       }
       res.render("index", data);
@@ -38,7 +38,7 @@ module.exports = function (app) {
       for (var i = 0; i < dbEmote.length; i += 1) {
         // Get the current emote
         let currentEmote = dbEmote[i].dataValues;
-        // If so, push it into our data.emotes array.
+        // Push it into our data.emotes array.
         data.emotes.push(currentEmote);
       }
       res.render("index", data);
@@ -72,7 +72,6 @@ module.exports = function (app) {
 
   app.delete("/api/emotes/:id", function (req, res) {
     // Delete the Emote with the id available to us in req.params.id
-    //console.log(req.params.id);
     db.Emote.destroy({
       where: {
         id: req.params.id
