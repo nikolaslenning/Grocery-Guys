@@ -105,6 +105,7 @@ $("document").ready(function () {
         "contentType": false,
         "data": formData,
         beforeSend: function () {
+        console.log("Uploading");
         },
         // Logic that handles displaying image uploaded to IMGUR using API
         success: function (res) {
@@ -196,7 +197,7 @@ $("document").ready(function () {
         alert(errorString);
       });
   });
-  
+
   // Code That controls delete button in index.handlebars
   // eslint-disable-next-line no-unused-vars
   $(".delplan").on("click", function (event) {
