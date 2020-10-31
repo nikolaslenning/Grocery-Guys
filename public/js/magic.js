@@ -105,7 +105,7 @@ $("document").ready(function () {
         "contentType": false,
         "data": formData,
         beforeSend: function () {
-        console.log("Uploading");
+          console.log("Uploading");
         },
         // Logic that handles displaying image uploaded to IMGUR using API
         success: function (res) {
