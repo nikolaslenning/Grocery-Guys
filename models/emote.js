@@ -1,5 +1,5 @@
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Emote = sequelize.define("Emote", {
     url: {
       type: DataTypes.STRING,
@@ -43,7 +43,7 @@ module.exports = function(sequelize, DataTypes) {
 
   });
 
-  Emote.associate = function(models) {
+  Emote.associate = function (models) {
     // We're saying that a Emote should belong to an User
     // A Emote can't be created without an User due to the foreign key constraint
     Emote.belongsTo(models.User, {

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Getting references to our form and inputs
   var loginForm = $("form.login");
   var emailInput = $("input#email-input");
@@ -9,17 +9,17 @@ $(document).ready(function() {
       email: email,
       password: password
     })
-      .then(function() {
+      .then(function () {
         window.location.replace("/members");
         // If there's an error, log the error
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
       });
   }
 
   // When the form is submitted, we validate there's an email and password entered
-  loginForm.on("submit", function(event) {
+  loginForm.on("submit", function (event) {
     event.preventDefault();
     var userData = {
       email: emailInput.val().trim(),
