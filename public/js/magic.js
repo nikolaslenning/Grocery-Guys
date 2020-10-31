@@ -52,7 +52,7 @@ function face(sourceImageUrl) {
         surprise: data[0].faceAttributes.emotion.surprise,
 
       };
-      $.post("/api/emote", newEmote)
+      $.post("/api/emotes", newEmote)
         // on success, run this callback
         .then(function (data) {
           // log the data we found
@@ -120,7 +120,9 @@ $("document").ready(function () {
         },
         // Logic that handles displaying image uploaded to IMGUR using API
         success: function (res) {
-          console.log(res.data.link);
+          console.log("res.data res.data res.data");
+          console.log(res.data);
+          // console.log(res.data.link);
           $('.imgBody').empty().append('<img src="' + res.data.link + '" />');
           face(res.data.link);
         },
@@ -185,7 +187,7 @@ $("document").ready(function () {
           neutral: data[0].faceAttributes.emotion.neutral,
           sadness: data[0].faceAttributes.emotion.sadness,
           surprise: data[0].faceAttributes.emotion.surprise,
-
+          // deleteHash:
         };//Pass in newEmote variable to POST request
         $.post("/api/emotes", newEmote)
           // on success, run this callback
