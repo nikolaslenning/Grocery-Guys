@@ -1,5 +1,5 @@
 // face function to run face analysis on the image being uploaded
-function face(sourceImageUrl) {
+function face(sourceImageUrl, deleteHash) {
 
   var subscriptionKey = "76e79cc95d1e4b18be961bc9329ae3e5";
   var uriBase =
@@ -50,7 +50,7 @@ function face(sourceImageUrl) {
         neutral: data[0].faceAttributes.emotion.neutral,
         sadness: data[0].faceAttributes.emotion.sadness,
         surprise: data[0].faceAttributes.emotion.surprise,
-
+        deleteHash: deleteHash
       };
       $.post("/api/emotes", newEmote)
         // on success, run this callback
@@ -122,9 +122,11 @@ $("document").ready(function () {
         success: function (res) {
           console.log("res.data res.data res.data");
           console.log(res.data);
+          console.log(res.data.deletehash);
           // console.log(res.data.link);
           $('.imgBody').empty().append('<img src="' + res.data.link + '" />');
-          face(res.data.link);
+          face(res.data.link, res.data.deletehash);
+          return res.data.deletehash;
         },
         error: function () {
           alert("Failed");
@@ -177,6 +179,8 @@ $("document").ready(function () {
         // Show formatted JSON on webpage.
         $("#responseTextArea").val(JSON.stringify(data, null, 2));
         //Create variabgle to house organized data
+        // console.log("data");
+        // console.log(res.data.deletehash);
         var newEmote = {
           url: sourceImageUrl,
           anger: data[0].faceAttributes.emotion.anger,
@@ -187,16 +191,17 @@ $("document").ready(function () {
           neutral: data[0].faceAttributes.emotion.neutral,
           sadness: data[0].faceAttributes.emotion.sadness,
           surprise: data[0].faceAttributes.emotion.surprise,
-          // deleteHash:
+
         };//Pass in newEmote variable to POST request
         $.post("/api/emotes", newEmote)
           // on success, run this callback
+          // eslint-disable-next-line no-unused-vars
           .then(function (data) {
             // log the data we found
-            console.log("newEmote newEmote newEmote newEmote");
-            console.log(newEmote);
-            console.log("data data data data");
-            console.log(data);
+            // console.log("newEmote newEmote newEmote newEmote");
+            // console.log(newEmote);
+            // console.log("data data data data");
+            // console.log(data);
             // tell the user we're adding a character with an alert window
             alert("Adding Emote...");
           });
@@ -220,7 +225,21 @@ $("document").ready(function () {
     // Get the ID from the button.
     // This is shorthand for $(this).attr("data-planid")
     var id = $(this).data("planid");
+    var deleteHash = $(this).data("deletehash");
+    var apiKey = '4bd8e2fc19460e6';
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://api.imgur.com/3/image/" + deleteHash,
+      "method": "DELETE",
+      "headers": {
+        'Authorization': 'Client-ID ' + apiKey
+      }
+    };
 
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
     // Send the DELETE request.
     $.ajax("/api/emotes/" + id, {
       type: "DELETE"
@@ -231,5 +250,6 @@ $("document").ready(function () {
         location.reload();
       }
     );
+
   });
 });

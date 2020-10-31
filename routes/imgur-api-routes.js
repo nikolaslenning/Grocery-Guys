@@ -52,6 +52,8 @@ module.exports = function (app) {
   app.post("/api/emotes", function (req, res) {
     // Create a variable with the data available to us in req.body
     let emote = req.body;
+    // console.log("emote emote emote emote");
+    // console.log(emote);
 
     db.Emote.create({
       url: emote.url,
@@ -63,7 +65,8 @@ module.exports = function (app) {
       neutral: parseFloat(emote.neutral),
       sadness: parseFloat(emote.sadness),
       surprise: parseFloat(emote.surprise),
-      UserId: req.user.id
+      UserId: req.user.id,
+      deleteHash: emote.deleteHash
 
     }).then(function (dbEmote) {
       res.json(dbEmote);
