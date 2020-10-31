@@ -1,0 +1,64 @@
+html{
+    background-color: #e8cda0;
+    color: white;
+}
+
+body{
+    background-color: #e8cda0;
+    color: black;
+
+
+}
+
+
+
+#welcome{
+    background-color: #6d9dab !important;
+    border-bottom-style: solid;
+    border-width: 3px;
+    background-color: #6d9dab;
+    border-color: white;
+}
+
+.jumboHeader{
+    text-align: center;
+    font-size: 3.5rem;
+    font-family: 'BenchNine', sans-serif;
+
+}
+
+.alertHeader{
+    text-align: center;
+    /* font-family: 'BenchNine', sans-serif; */
+}
+
+a{
+    color: rgba(253, 253, 253, 0.541);
+}
+
+#loginForm{
+    background-color: #6d9dab;
+    border-style: solid;
+    border-color: rgb(255, 255, 255) !important;
+    color: white; 
+
+}
+
+#mission{
+    border-style: solid;
+    border-width: 3px;
+    background-color: #6d9dab;
+    border-color: white;
+    color: white;
+}
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 18rem;
+  }
+
+.padding{
+    padding-top: 5px;
+    padding-bottom: 16px;
+}
