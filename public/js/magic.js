@@ -17,15 +17,12 @@ function face(sourceImageUrl, deleteHash) {
   // Perform the REST API call.
   $.ajax({
     url: uriBase + "?" + $.param(params),
-
     // Request headers.
     beforeSend: function (xhrObj) {
       xhrObj.setRequestHeader("Content-Type", "application/json");
       xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
     },
-
     type: "POST",
-
     // Request body.
     data: '{"url": ' + '"' + sourceImageUrl + '"}',
   })
@@ -55,8 +52,8 @@ function face(sourceImageUrl, deleteHash) {
         Surprise: data[0].faceAttributes.emotion.surprise
       };
 
-
       $("#responseTextArea").val(JSON.stringify(renderedEmote, null, 2).replace(/[}',"]+/g, '').replace(/[{]+/g, 'Face Analysis:'));
+
       $.post("/api/emotes", newEmote)
         // on success, run this callback
         .then(function (data) {
@@ -83,14 +80,9 @@ function face(sourceImageUrl, deleteHash) {
 $("document").ready(function () {
 
   $('input[type=file]').on("change", function () {
-
     var $files = $(this).get(0).files;
-    // console.log($files);
-    // console.log($files[0]);
-    // console.log($files[0].name);
 
     if ($files.length) {
-
       // Reject big files
       if ($files[0].size > $(this).data("max-size") * 1024) {
         console.log("Please select a smaller file");
@@ -196,19 +188,13 @@ $("document").ready(function () {
         $("#responseTextArea").val(JSON.stringify(renderedEmote, null, 2).replace(/[}',"]+/g, '').replace(/[{]+/g, 'Face Analysis:'));
 
         //Pass in newEmote variable to POST request
-
         $.post("/api/emotes", newEmote)
           // on success, run this callback
           // eslint-disable-next-line no-unused-vars
           .then(function (data) {
             // log the data we found
-
-            // console.log("newEmote newEmote newEmote newEmote");
-            // console.log(newEmote);
-            // console.log("data data data data");
             // console.log(data);
             // tell the user we're adding a character with an alert window
-
             alert("Adding Emote...");
           });
       })
@@ -245,6 +231,7 @@ $("document").ready(function () {
     $.ajax(settings).done(function (response) {
       console.log(response);
     });
+
     // Send the DELETE request.
     $.ajax("/api/emotes/" + id, {
       type: "DELETE"
