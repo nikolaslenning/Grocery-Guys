@@ -1,7 +1,7 @@
 // face function to run face analysis on the image being uploaded
 function face(sourceImageUrl, deleteHash) {
 
-  var subscriptionKey = process.env.FACE_API_KEY;
+  var subscriptionKey = "76e79cc95d1e4b18be961bc9329ae3e5";
   var uriBase =
     "https://emote.cognitiveservices.azure.com//face/v1.0/detect";
 
@@ -31,8 +31,6 @@ function face(sourceImageUrl, deleteHash) {
   })
     .done(function (data) {
       // Show formatted JSON on webpage
-      $("#responseTextArea").val(JSON.stringify(data, null, 2));
-
       var newEmote = {
         url: sourceImageUrl,
         anger: data[0].faceAttributes.emotion.anger,
@@ -44,8 +42,21 @@ function face(sourceImageUrl, deleteHash) {
         sadness: data[0].faceAttributes.emotion.sadness,
         surprise: data[0].faceAttributes.emotion.surprise,
         deleteHash: deleteHash
-
       };
+
+      var renderedEmote = {
+        Anger: data[0].faceAttributes.emotion.anger,
+        Contempt: data[0].faceAttributes.emotion.contempt,
+        Disgust: data[0].faceAttributes.emotion.disgust,
+        Fear: data[0].faceAttributes.emotion.fear,
+        Happiness: data[0].faceAttributes.emotion.happiness,
+        Neutral: data[0].faceAttributes.emotion.neutral,
+        Sadness: data[0].faceAttributes.emotion.sadness,
+        Surprise: data[0].faceAttributes.emotion.surprise
+      };
+
+
+      $("#responseTextArea").val(JSON.stringify(renderedEmote, null, 2).replace(/[}',"]+/g, '').replace(/[{]+/g, 'Face Analysis:'));
       $.post("/api/emotes", newEmote)
         // on success, run this callback
         .then(function (data) {
@@ -74,9 +85,9 @@ $("document").ready(function () {
   $('input[type=file]').on("change", function () {
 
     var $files = $(this).get(0).files;
-    console.log($files);
-    console.log($files[0]);
-    console.log($files[0].name);
+    // console.log($files);
+    // console.log($files[0]);
+    // console.log($files[0].name);
 
     if ($files.length) {
 
@@ -88,7 +99,7 @@ $("document").ready(function () {
       // API key === clientId
       let albumID = "cMVVE5y";
       var apiUrl = 'https://api.imgur.com/3/image';
-      var apiKey = process.env.IMGUR_API_KEY;
+      var apiKey = "4bd8e2fc19460e6";
 
       var formData = new FormData();
       formData.append("image", $files[0]);
@@ -111,11 +122,8 @@ $("document").ready(function () {
         },
         // Logic that handles displaying image uploaded to IMGUR using API
         success: function (res) {
-
-          // console.log(res.data.link);
           $('.imgBody').empty().append('<img src="' + res.data.link + '" />');
           face(res.data.link, res.data.deletehash);
-          return res.data.deletehash;
         },
         error: function () {
           alert("Failed");
@@ -132,7 +140,7 @@ $("document").ready(function () {
   //Analyze button click listener
   $('.processButton').on("click", function () {
     //login credentials for Face API
-    var subscriptionKey = process.env.FACE_API_KEY;
+    var subscriptionKey = "76e79cc95d1e4b18be961bc9329ae3e5";
     var uriBase =
       "https://emote.cognitiveservices.azure.com//face/v1.0/detect";
 
@@ -161,11 +169,7 @@ $("document").ready(function () {
       data: '{"url": ' + '"' + sourceImageUrl + '"}',
     })
       .done(function (data) {
-        // Show formatted JSON on webpage
-        $("#responseTextArea").val(JSON.stringify(data, null, 2));
         //Create variabgle to house organized data
-        // console.log("data");
-        // console.log(res.data.deletehash);
         var newEmote = {
           url: sourceImageUrl,
           anger: data[0].faceAttributes.emotion.anger,
@@ -176,8 +180,20 @@ $("document").ready(function () {
           neutral: data[0].faceAttributes.emotion.neutral,
           sadness: data[0].faceAttributes.emotion.sadness,
           surprise: data[0].faceAttributes.emotion.surprise,
-
         };
+
+        var renderedEmote = {
+          Anger: data[0].faceAttributes.emotion.anger,
+          Contempt: data[0].faceAttributes.emotion.contempt,
+          Disgust: data[0].faceAttributes.emotion.disgust,
+          Fear: data[0].faceAttributes.emotion.fear,
+          Happiness: data[0].faceAttributes.emotion.happiness,
+          Neutral: data[0].faceAttributes.emotion.neutral,
+          Sadness: data[0].faceAttributes.emotion.sadness,
+          Surprise: data[0].faceAttributes.emotion.surprise
+        };
+
+        $("#responseTextArea").val(JSON.stringify(renderedEmote, null, 2).replace(/[}',"]+/g, '').replace(/[{]+/g, 'Face Analysis:'));
 
         //Pass in newEmote variable to POST request
 
