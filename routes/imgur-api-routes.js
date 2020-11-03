@@ -86,6 +86,7 @@ module.exports = function (app) {
     });
   });
 
+  // eslint-disable-next-line no-unused-vars
   app.delete("/api/delete/:deleteHash", function (req, res) {
     // Delete the Emote with the id available to us in req.params.id
     imgur.deleteImage(req.params.deleteHash)

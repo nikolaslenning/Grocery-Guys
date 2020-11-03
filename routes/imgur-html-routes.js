@@ -93,7 +93,7 @@ module.exports = function (app) {
       db.Emote.create({
         ...emote,  // tripel period (...) = spread syntax/operator opens up emote box
         UserId: req.user.id,
-        
+
       }).then(function (dbEmote) {
         // res.render('emote', emotesData.renderedEmote)
         res.render ("emote", dbEmote.dataValues)
