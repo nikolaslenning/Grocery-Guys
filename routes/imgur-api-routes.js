@@ -53,9 +53,7 @@ module.exports = function (app) {
   app.post("/api/emotes", function (req, res) {
     // Create a variable with the data available to us in req.body
     let emote = req.body;
-    // console.log("emote emote emote emote");
-    // console.log(emote);
-
+    
     db.Emote.create({
       url: emote.url,
       anger: parseFloat(emote.anger),
@@ -75,8 +73,7 @@ module.exports = function (app) {
   });
 
   app.delete("/api/emotes/:id", function (req, res) {
-    // Delete the Emote with the id available to us in req.params.id
-    //console.log(req.params.id);
+    // Delete the Emote with the id available to us in req.params.id    
     db.Emote.destroy({
       where: {
         id: req.params.id
@@ -91,12 +88,9 @@ module.exports = function (app) {
     // Delete the Emote with the id available to us in req.params.id
     imgur.deleteImage(req.params.deleteHash)
       .then(function(status) {
-        console.log("status status status");
-        console.log(status);
-        console.log(req.params.deleteHash);
+        console.log(status);        
       })
       .catch(function(err) {
-        console.error("err.message err.message err.message");
         console.error(err.message);
       });
   });

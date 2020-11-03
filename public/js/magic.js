@@ -217,21 +217,7 @@ $(".delplan").on("click", function (event) {
   // This is shorthand for $(this).attr("data-planid")
   var id = $(this).data("planid");
   var deleteHash = $(this).data("deletehash");
-  // var apiKey = '4bd8e2fc19460e6';
-  // var settings = {
-  //   "async": true,
-  //   "crossDomain": true,
-  //   "url": "https://api.imgur.com/3/image/" + deleteHash,
-  //   "method": "DELETE",
-  //   "headers": {
-  //     'Authorization': 'Client-ID ' + apiKey
-  //   }
-  // };
-
-  // $.ajax(settings).done(function (response) {
-  //   console.log(response);
-  // });
-
+ 
   // Send the DELETE request.
   $.ajax("/api/delete/" + deleteHash, {
     type: "DELETE"
