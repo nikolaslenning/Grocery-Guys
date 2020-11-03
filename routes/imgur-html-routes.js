@@ -7,10 +7,8 @@ const upload = multer({
 
 const { FaceClient, FaceModels } = require("@azure/cognitiveservices-face");
 const { CognitiveServicesCredentials } = require("@azure/ms-rest-azure-js");
-const e = require("express");
 
-// var newEmote = {};
-// var renderedEmote = {};
+
 
 // https://www.npmjs.com/package/@azure/cognitiveservices-face
 async function main(sourceImageUrl, deleteHash) {
@@ -18,20 +16,15 @@ async function main(sourceImageUrl, deleteHash) {
   const faceEndPoint = process.env.FACE_ENDPOINT;
   const cognitiveServiceCredentials = new CognitiveServicesCredentials(faceKey);
   const client = new FaceClient(cognitiveServiceCredentials, faceEndPoint);
-  let url = sourceImageUrl;
-
   const options = {
     returnFaceLandmarks: false,
     returnFaceAttributes: ["age", "gender", "emotion"]
   };
+  let url = sourceImageUrl;
   let data = await client.face
     .detectWithUrl(url, options);
     //line 28 wont run until 26/27 finished using await
-  // .then(data => {
-  console.log("The data is: ");
-  console.log(data);
-  //   console.log(data[0].faceAttributes);
-  console.log(data[0].faceAttributes.emotion);
+  
   var newEmote = {
     url: sourceImageUrl,
     anger: data[0].faceAttributes.emotion.anger,
@@ -44,6 +37,7 @@ async function main(sourceImageUrl, deleteHash) {
     surprise: data[0].faceAttributes.emotion.surprise,
     deleteHash: deleteHash
   };
+
   var renderedEmote = {
     Anger: data[0].faceAttributes.emotion.anger,
     Contempt: data[0].faceAttributes.emotion.contempt,
@@ -54,53 +48,24 @@ async function main(sourceImageUrl, deleteHash) {
     Sadness: data[0].faceAttributes.emotion.sadness,
     Surprise: data[0].faceAttributes.emotion.surprise
   };
-  //   console.log("newEmote");
-  //   console.log(newEmote);
-  //   console.log("renderedEmote");
-  //   console.log(renderedEmote);
-  //   return newEmote && renderedEmote;
-  // db.Emote.create({ newEmote });
-  // return data;
-  return {newEmote, renderedEmote};
-  // })
-  // .catch(err => {
-  //   console.log("An error occurred:");
-  //   console.error(err);
-  // });
+  
+  return {newEmote, renderedEmote}; 
 }
-
 
 module.exports = function (app) {
   //https://medium.com/@nitinpatel_20236/image-upload-via-nodejs-server-3fe7d3faa642
   app.post('/api/upload', upload.single('photo'), async (req, res) => {
-    if (req.file) {
-      //   var imgBody = document.getElementsByClassName("imgBody");
-      //   imgBody.empty().append('<img src="' + res.data.link + '" />');
-      //   face(req.file.link, req.file.deletehash);
-      //   console.log(req.file);
-      //   console.log("req.file.data.link, req.file.data.deleteHash");
-      //   console.log(req.file.data.link);
-      //   console.log(req.file.data.deletehash);
-      console.log(req.file.data.deletehash);
-      var emotesData = await main(req.file.data.link, req.file.data.deletehash);
-      //   console.log(newEmote),
-      console.log("emotesData emotesData emotesData");
-      console.log(JSON.stringify(emotesData));
-      let emote = emotesData.newEmote;
-      console.log("emote emote emote emote");
-      console.log(emote);
+    if (req.file) {      
+      var emotesData = await main(req.file.data.link, req.file.data.deletehash);          
+      let emote = emotesData.newEmote;     
 
       db.Emote.create({
         ...emote,  // tripel period (...) = spread syntax/operator opens up emote box
         UserId: req.user.id,
 
       }).then(function (dbEmote) {
-        // res.render('emote', emotesData.renderedEmote)
-        res.render ("emote", dbEmote.dataValues)
-        // res.json(emotesData.renderedEmote);
-      });
-      // res.json(emotesData);
-      // AXIOS post to /api/emotes send newEmote/renderedEmote or datalink & deletehash?
+        res.render ("emote", dbEmote.dataValues)        
+      });      
     } else {
       throw 'error';
     }
@@ -115,12 +80,6 @@ module.exports = function (app) {
       UserId: req.user.id,
       
     }).then(function (dbEmote) {
-      // res.json(emotesData.renderedEmote);
-      // res.render (decide view from handlebars, data inserted intohandlebars)
-      console.log("dbEmote dbEmote dbEmote -----------------------");
-      console.log(dbEmote);
-      console.log(dbEmote.dataValues);
-      // console.log(dbEmote.Emote.dataValues);
       res.render ("emote", dbEmote.dataValues)
     });
 
