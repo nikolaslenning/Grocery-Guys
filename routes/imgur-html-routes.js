@@ -95,7 +95,9 @@ module.exports = function (app) {
         UserId: req.user.id,
         
       }).then(function (dbEmote) {
-        res.json(emotesData.renderedEmote);
+        // res.render('emote', emotesData.renderedEmote)
+        res.render ("emote", dbEmote.dataValues)
+        // res.json(emotesData.renderedEmote);
       });
       // res.json(emotesData);
       // AXIOS post to /api/emotes send newEmote/renderedEmote or datalink & deletehash?
@@ -113,8 +115,13 @@ module.exports = function (app) {
       UserId: req.user.id,
       
     }).then(function (dbEmote) {
-      res.json(emotesData.renderedEmote);
+      // res.json(emotesData.renderedEmote);
       // res.render (decide view from handlebars, data inserted intohandlebars)
+      console.log("dbEmote dbEmote dbEmote -----------------------");
+      console.log(dbEmote);
+      console.log(dbEmote.dataValues);
+      // console.log(dbEmote.Emote.dataValues);
+      res.render ("emote", dbEmote.dataValues)
     });
 
   });
