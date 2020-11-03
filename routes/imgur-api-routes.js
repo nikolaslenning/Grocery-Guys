@@ -1,5 +1,6 @@
 var db = require("../models");
 var { Op } = require("sequelize");
+var imgur = require('imgur');
 
 module.exports = function (app) {
   // Find all Emotes and return them to the user with res.json
@@ -83,5 +84,19 @@ module.exports = function (app) {
     }).then(function (dbEmote) {
       res.json(dbEmote);
     });
+  });
+
+  app.delete("/api/delete/:deleteHash", function (req, res) {
+    // Delete the Emote with the id available to us in req.params.id
+    imgur.deleteImage(req.params.deleteHash)
+      .then(function(status) {
+        console.log("status status status");
+        console.log(status);
+        console.log(req.params.deleteHash);
+      })
+      .catch(function(err) {
+        console.error("err.message err.message err.message");
+        console.error(err.message);
+      });
   });
 };

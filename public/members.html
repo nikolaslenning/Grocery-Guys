@@ -8,6 +8,7 @@
   <link rel="icon" type="image/png" href="img/emote.png"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
   <link href="stylesheets/style.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -28,11 +29,25 @@
     </div>
   </div>
 
-  <!-- https://gist.github.com/bmcbride/7577e6aed5ce962776ca -->
+
+  <h1>Upload Image to Backend/IMGUR</h1>
+  <!-- https://medium.com/@nitinpatel_20236/image-upload-via-nodejs-server-3fe7d3faa642 -->
+ <form action="/api/upload" method="POST" enctype="multipart/form-data">
+         <input type="file" accept="image/*" name="photo" >
+         <input type="submit" value="upload">
+ </form>
+<div class='imgBody'></div> 
+  <!-- https://gist.github.com/bmcbride/7577e6aed5ce962776ca
   <form id="imgur">
     <input type="file" class="imgur" accept="image/*" data-max-size="5000" />
   </form>
-  <div class='imgBody'></div>
+  -->
+
+<!-- https://stackoverflow.com/questions/44852297/pass-user-input-from-front-end-to-back-end-in-node-express -->
+  <form method="POST" action="/api/url">
+    <input type="text" id="url" name="url" value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg"/>
+    <button type="submit">Analyze Face</button>
+ </form>
 
   <!-- Face API code -->
   <h1>Detect Faces:</h1>
@@ -56,7 +71,9 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
   <script type="text/javascript" src="js/members.js"></script>
   <script type="text/javascript" src="js/magic.js"></script>
 

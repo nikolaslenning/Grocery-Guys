@@ -31,7 +31,7 @@ app.set("view engine", "handlebars");
 // Requiring our routes
 require("./routes/user-html-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
-// require("./routes/imgur-html-routes.js")(app);
+require("./routes/imgur-html-routes.js")(app);
 require("./routes/imgur-api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
