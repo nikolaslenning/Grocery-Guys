@@ -93,18 +93,7 @@ module.exports = function (app) {
       db.Emote.create({
         ...emote,  // tripel period (...) = spread syntax/operator opens up emote box
         UserId: req.user.id,
-        // url: emote.url,
-        // anger: parseFloat(emote.anger),
-        // contempt: parseFloat(emote.contempt),
-        // disgust: parseFloat(emote.disgust),
-        // fear: parseFloat(emote.fear),
-        // happiness: parseFloat(emote.happiness),
-        // neutral: parseFloat(emote.neutral),
-        // sadness: parseFloat(emote.sadness),
-        // surprise: parseFloat(emote.surprise),
-        // UserId: req.user.id,
-        // deleteHash: emote.deleteHash
-
+        
       }).then(function (dbEmote) {
         res.json(emotesData.renderedEmote);
       });
@@ -115,8 +104,18 @@ module.exports = function (app) {
     }
   });
 
-  app.post("/api/url", function (req, res) {
+  app.post("/api/url", async function (req, res) {
     console.log(req.body.url);
-    main(req.body.url);
+    var emotesData = await main(req.body.url);
+    let emote = emotesData.newEmote;
+    db.Emote.create({
+      ...emote,  // tripel period (...) = spread syntax/operator opens up emote box
+      UserId: req.user.id,
+      
+    }).then(function (dbEmote) {
+      res.json(emotesData.renderedEmote);
+      // res.render (decide view from handlebars, data inserted intohandlebars)
+    });
+
   });
 };
