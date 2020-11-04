@@ -24,7 +24,7 @@
 
     <a class="nav-link" class="sr-only" href="NEED A LINK TO PAGE">
       Analyzed Images
-    </a>
+    </a> -->
   </nav>
 
 
@@ -37,74 +37,76 @@
       </div>
 
       <div class="col"></div>
+
     </div>
-  </div>
 
-  <div class="container-fluid">
+    <div class="container-fluid">
 
-    <div id="detectFaces" class="row border">
-      <div class="col border">
+      <div id="detectFaces" class="row border">
+        <div class="col border">
 
-        <div class="jumbotron jumbotron-fluid mt-2 mb-2" id="howTo">
-          <div class="container">
-            <h1 class="display-4" id="works">How it Works</h1>
-            <p class="lead left">
-              By choosing between a link or file, you can detect the emotions of a face and get it back as a
-              numerical value.
-              You can then look at your previously scanned images and compare and contrast
-              <a href="NEED A LINK TO PAGE">Here.</a>
-            </p>
+          <div class="jumbotron jumbotron-fluid mt-2 mb-2" id="howTo">
+            <div class="container">
+              <h1 class="display-4" id="works">How it Works</h1>
+              <p class="lead left">
+                By choosing between a link or file, you can detect the emotions of a face and get it back as a
+                numerical value.
+                You can then look at your previously scanned images and compare and contrast
+                <a href="NEED A LINK TO PAGE">Here.</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Face API code -->
+          <h1>Use a Link:</h1>
+          <p class="urlText">
+            Enter the URL to an image that includes a face or faces, then click
+            the <strong>Analyze face</strong> button.
+          </p>
+
+          <form method="POST" action="/api/url">
+            <input type="text" id="url" name="url"
+              value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg" />
+            <button class="btn btn-info" type="submit">Analyze Face</button>
+          </form>
+
+          <h1 class="mt-2 mb-2">OR</h1>
+
+          <!-- This is for choosing the file -->
+          <!-- https://gist.github.com/bmcbride/7577e6aed5ce962776ca -->
+
+          <h1 class="mb-3">Upload a File</h1>
+          <!-- https://medium.com/@nitinpatel_20236/image-upload-via-nodejs-server-3fe7d3faa642 -->
+          <form class="pb-3" action="/api/upload" method="POST" enctype="multipart/form-data">
+            <input class="uploadFile" type="file" accept="image/*" name="photo">
+            <input class="btn btn-info fileButton" type="submit" value="Upload File">
+          </form>
+          <div class='imgBody'></div>
+        </div>
+
+        <div class="col border">
+          <!-- response -->
+          <div id="imageDiv">
+            <h3>Source Image:</h3>
+            <img id="sourceImage" class="img-fluid" src="https://via.placeholder.com/500" />
+          </div>
+          <div id="jsonOutput">
+            <h3>Response:</h3>
+            <textarea id="responseTextArea" class="UIInput" style="width:20rem; height:20rem;"></textarea>
           </div>
         </div>
-
-        <!-- Face API code -->
-        <h1>Use a Link:</h1>
-        <p class="urlText">
-          Enter the URL to an image that includes a face or faces, then click
-          the <strong>Analyze face</strong> button.
-        </p>
-
-        <form method="POST" action="/api/url">
-          <input type="text" id="url" name="url"
-            value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg" />
-          <button class="btn btn-info" type="submit">Analyze Face</button>
-        </form>
-
-        <h1 class="mt-2 mb-2">OR</h1>
-
-        <!-- This is for choosing the file -->
-        <!-- https://gist.github.com/bmcbride/7577e6aed5ce962776ca -->
-
-        <h1 class="mb-3">Upload a File</h1>
-        <!-- https://medium.com/@nitinpatel_20236/image-upload-via-nodejs-server-3fe7d3faa642 -->
-        <form class="pb-3" action="/api/upload" method="POST" enctype="multipart/form-data">
-          <input class="uploadFile" type="file" accept="image/*" name="photo">
-          <input class="btn btn-info fileButton" type="submit" value="Upload File">
-        </form>
-        <div class='imgBody'></div>
+        <!-- This was moved out of the wrapper div -->
       </div>
-
-      <div class="col border">
-        <!-- response -->
-        <div id="imageDiv">
-          <h3>Source Image:</h3>
-          <img id="sourceImage" class="img-fluid" src="https://via.placeholder.com/500" />
-        </div>
-        <div id="jsonOutput">
-          <h3>Response:</h3>
-          <textarea id="responseTextArea" class="UIInput" style="width:20rem; height:20rem;"></textarea>
-        </div>
-      </div>
-      <!-- This was moved out of the wrapper div -->
     </div>
-  </div>
 
   </div>
   </div>
 
 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/members.js"></script>
   <script type="text/javascript" src="js/magic.js"></script>
 
