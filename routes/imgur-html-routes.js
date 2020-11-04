@@ -5,6 +5,7 @@ const upload = multer({
   storage: ImgurStorage({ clientId: process.env.IMGUR_API_KEY })
 });
 
+// eslint-disable-next-line no-unused-vars
 const { FaceClient, FaceModels } = require("@azure/cognitiveservices-face");
 const { CognitiveServicesCredentials } = require("@azure/ms-rest-azure-js");
 
@@ -24,7 +25,7 @@ async function main(sourceImageUrl, deleteHash) {
   let data = await client.face
     .detectWithUrl(url, options);
     //line 28 wont run until 26/27 finished using await
-  
+
   var newEmote = {
     url: sourceImageUrl,
     anger: data[0].faceAttributes.emotion.anger,
@@ -48,24 +49,25 @@ async function main(sourceImageUrl, deleteHash) {
     Sadness: data[0].faceAttributes.emotion.sadness,
     Surprise: data[0].faceAttributes.emotion.surprise
   };
-  
-  return {newEmote, renderedEmote}; 
+
+  return {newEmote, renderedEmote};
 }
 
 module.exports = function (app) {
   //https://medium.com/@nitinpatel_20236/image-upload-via-nodejs-server-3fe7d3faa642
   app.post('/api/upload', upload.single('photo'), async (req, res) => {
-    if (req.file) {      
-      var emotesData = await main(req.file.data.link, req.file.data.deletehash);          
-      let emote = emotesData.newEmote;     
+    if (req.file) {
+      var emotesData = await main(req.file.data.link, req.file.data.deletehash);
+      let emote = emotesData.newEmote;
 
       db.Emote.create({
-        ...emote,  // tripel period (...) = spread syntax/operator opens up emote box
+        ...emote,
+        // tripel period (...) = spread syntax/operator opens up emote box
         UserId: req.user.id,
 
       }).then(function (dbEmote) {
-        res.render ("emote", dbEmote.dataValues)        
-      });      
+        res.render ("emote", dbEmote.dataValues);
+      });
     } else {
       throw 'error';
     }
@@ -76,11 +78,12 @@ module.exports = function (app) {
     var emotesData = await main(req.body.url);
     let emote = emotesData.newEmote;
     db.Emote.create({
-      ...emote,  // tripel period (...) = spread syntax/operator opens up emote box
+      ...emote,
+      // tripel period (...) = spread syntax/operator opens up emote box
       UserId: req.user.id,
-      
+
     }).then(function (dbEmote) {
-      res.render ("emote", dbEmote.dataValues)
+      res.render ("emote", dbEmote.dataValues);
     });
 
   });

@@ -217,7 +217,7 @@ $(".delplan").on("click", function (event) {
   // This is shorthand for $(this).attr("data-planid")
   var id = $(this).data("planid");
   var deleteHash = $(this).data("deletehash");
- 
+
   // Send the DELETE request.
   $.ajax("/api/delete/" + deleteHash, {
     type: "DELETE"
