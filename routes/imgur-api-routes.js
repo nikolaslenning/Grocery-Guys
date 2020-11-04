@@ -1,3 +1,4 @@
+// Require node packages and file paths
 var db = require("../models");
 var { Op } = require("sequelize");
 var imgur = require('imgur');
@@ -87,10 +88,10 @@ module.exports = function (app) {
   app.delete("/api/delete/:deleteHash", function (req, res) {
     // Delete the Emote with the id available to us in req.params.id
     imgur.deleteImage(req.params.deleteHash)
-      .then(function(status) {
+      .then(function (status) {
         console.log(status);
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.error(err.message);
       });
   });

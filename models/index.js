@@ -1,5 +1,7 @@
+// Executing code in 'strict mode'
 'use strict';
 
+// Require in packages, and setting db variable to empty object
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');

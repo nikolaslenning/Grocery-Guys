@@ -1,4 +1,3 @@
-
 module.exports = function (sequelize, DataTypes) {
   var Emote = sequelize.define("Emote", {
     url: {

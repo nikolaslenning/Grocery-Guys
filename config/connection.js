@@ -1,6 +1,7 @@
+// Require 'mysql' package
 var mysql = require("mysql");
 
-
+// Setting up JAWS_DB connection and if it doesn't run, use mysql connection
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
@@ -13,6 +14,7 @@ if (process.env.JAWSDB_URL) {
   });
 }
 
+// Start connection to database
 connection.connect(function (err) {
   if (err) {
     console.error("error connecting: " + err.stack);

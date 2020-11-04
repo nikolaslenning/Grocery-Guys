@@ -1,57 +1,56 @@
- 
-
-      <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/logout">
-          Logout
-        </a>
-      </div>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
-      </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/logout">
+        Logout
+      </a>
     </div>
   </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>Welcome <span class="member-name"></span></h2>
+    </div>
+  </div>
+</div>
 
 
-  <h1>Upload Image to Backend/IMGUR</h1>
-  <!-- https://medium.com/@nitinpatel_20236/image-upload-via-nodejs-server-3fe7d3faa642 -->
- <form action="/api/upload" method="POST" enctype="multipart/form-data">
-         <input type="file" accept="image/*" name="photo" >
-         <input type="submit" value="upload">
- </form>
-<div class='imgBody'></div> 
-  <!-- https://gist.github.com/bmcbride/7577e6aed5ce962776ca
+<h1>Upload Image to Backend/IMGUR</h1>
+<!-- https://medium.com/@nitinpatel_20236/image-upload-via-nodejs-server-3fe7d3faa642 -->
+<form action="/api/upload" method="POST" enctype="multipart/form-data">
+  <input type="file" accept="image/*" name="photo">
+  <input type="submit" value="upload">
+</form>
+<div class='imgBody'></div>
+<!-- https://gist.github.com/bmcbride/7577e6aed5ce962776ca
   <form id="imgur">
     <input type="file" class="imgur" accept="image/*" data-max-size="5000" />
   </form>
   -->
 
 <!-- https://stackoverflow.com/questions/44852297/pass-user-input-from-front-end-to-back-end-in-node-express -->
-  <form method="POST" action="/api/url">
-    <input type="text" id="url" name="url" value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg"/>
-    <button type="submit">Analyze Face</button>
- </form>
+<form method="POST" action="/api/url">
+  <input type="text" id="url" name="url"
+    value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg" />
+  <button type="submit">Analyze Face</button>
+</form>
 
-  <!-- Face API code -->
-  <h1>Detect Faces:</h1>
+<!-- Face API code -->
+<h1>Detect Faces:</h1>
 
-  Enter the URL to an image that includes a face or faces, then click
-  the <strong>Analyze face</strong> button.<br><br>
-  Image to analyze:
-   <!-- <input type="text" name="inputImage" id="inputImage"
+Enter the URL to an image that includes a face or faces, then click
+the <strong>Analyze face</strong> button.<br><br>
+Image to analyze:
+<!-- <input type="text" name="inputImage" id="inputImage"
     value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg" />
   
     <button class="processButton">Analyze face</button><br><br> -->
-    
-  <div id="wrapper" style="width:1020px; display:table;">
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
-      Response:<br><br>
-      <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;">
+
+<div id="wrapper" style="width:1020px; display:table;">
+  <div id="jsonOutput" style="width:600px; display:table-cell;">
+    Response:<br><br>
+    <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;">
       Face Analysis:
       Anger: {{anger}}
       Contempt: {{contempt}}
@@ -62,11 +61,11 @@
       Sadness: {{sadness}}
       Surprise: {{surprise}}
       </textarea>
-    </div>
-
-    <div id="imageDiv" style="width:420px; display:table-cell;">
-      Source image:<br><br>
-      <img id="sourceImage" width="400" src = {{url}}></img>
-      
-    </div>
   </div>
+
+  <div id="imageDiv" style="width:420px; display:table-cell;">
+    Source image:<br><br>
+    <img id="sourceImage" width="400" src={{url}}></img>
+
+  </div>
+</div>

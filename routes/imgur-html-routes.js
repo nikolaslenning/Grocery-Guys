@@ -1,3 +1,4 @@
+// Require npm packages, file paths and setting API key to a variable
 var db = require("../models");
 const multer = require('multer');
 const ImgurStorage = require('multer-storage-imgur');
@@ -8,7 +9,6 @@ const upload = multer({
 // eslint-disable-next-line no-unused-vars
 const { FaceClient, FaceModels } = require("@azure/cognitiveservices-face");
 const { CognitiveServicesCredentials } = require("@azure/ms-rest-azure-js");
-
 
 
 // https://www.npmjs.com/package/@azure/cognitiveservices-face
@@ -24,7 +24,7 @@ async function main(sourceImageUrl, deleteHash) {
   let url = sourceImageUrl;
   let data = await client.face
     .detectWithUrl(url, options);
-    //line 28 wont run until 26/27 finished using await
+  //line 28 wont run until 26/27 finished using await
 
   var newEmote = {
     url: sourceImageUrl,
@@ -50,7 +50,7 @@ async function main(sourceImageUrl, deleteHash) {
     Surprise: data[0].faceAttributes.emotion.surprise
   };
 
-  return {newEmote, renderedEmote};
+  return { newEmote, renderedEmote };
 }
 
 module.exports = function (app) {
@@ -66,7 +66,7 @@ module.exports = function (app) {
         UserId: req.user.id,
 
       }).then(function (dbEmote) {
-        res.render ("emote", dbEmote.dataValues);
+        res.render("emote", dbEmote.dataValues);
       });
     } else {
       throw 'error';
@@ -83,8 +83,7 @@ module.exports = function (app) {
       UserId: req.user.id,
 
     }).then(function (dbEmote) {
-      res.render ("emote", dbEmote.dataValues);
+      res.render("emote", dbEmote.dataValues);
     });
-
   });
 };
