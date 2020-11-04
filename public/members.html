@@ -21,9 +21,26 @@
       <img src="img/emoteLogo.png"  class="d-inline-block align-top center" id="navImage" alt="Logo" loading="lazy">
     </a>
 
-    <a class="nav-link"  class="sr-only" href="NEED A LINK TO PAGE">
+    <li style="list-style-type:none" class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-dark" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        View Emotes
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/api/emotes">All Emotes</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/api/emotes/anger">Anger</a>
+        <a class="dropdown-item" href="/api/emotes/contempt">Contempt</a>
+        <a class="dropdown-item" href="/api/emotes/disgust">Disgust</a>
+        <a class="dropdown-item" href="/api/emotes/fear">Fear</a>
+        <a class="dropdown-item" href="/api/emotes/happiness">Happiness</a>
+        <a class="dropdown-item" href="/api/emotes/neutral">Neutral</a>
+        <a class="dropdown-item" href="/api/emotes/sadness">Sadness</a>
+        <a class="dropdown-item" href="/api/emotes/surprise">Surprise</a>
+      </div>
+    </li>
+    <!-- <a class="nav-link"  class="sr-only" href="/api/emotes">
       Analyzed Images
-    </a>
+    </a> -->
   </nav>
 
   <!-- oldnavbar just in case -->
@@ -102,7 +119,7 @@
 
     <div class="col border">
       
-<!-- response -->//
+<!-- response -->
   <div id="wrapper" style="width:15rem; display:table;">
     <div id="jsonOutput" style="width:20rem; display:table-cell;">
       Response:<br><br>
@@ -114,7 +131,7 @@
       <img id="sourceImage" class="" src="https://via.placeholder.com/250" />
     </div>
   </div> 
-//
+
     </div>
   </div>
 </div>
@@ -172,7 +189,9 @@
 
 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/members.js"></script>
   <script type="text/javascript" src="js/magic.js"></script>
 

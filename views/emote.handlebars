@@ -25,12 +25,7 @@
          <input type="submit" value="upload">
  </form>
 <div class='imgBody'></div> 
-  <!-- https://gist.github.com/bmcbride/7577e6aed5ce962776ca
-  <form id="imgur">
-    <input type="file" class="imgur" accept="image/*" data-max-size="5000" />
-  </form>
-  -->
-
+  
 <!-- https://stackoverflow.com/questions/44852297/pass-user-input-from-front-end-to-back-end-in-node-express -->
   <form method="POST" action="/api/url">
     <input type="text" id="url" name="url" value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg"/>
@@ -43,10 +38,7 @@
   Enter the URL to an image that includes a face or faces, then click
   the <strong>Analyze face</strong> button.<br><br>
   Image to analyze:
-   <!-- <input type="text" name="inputImage" id="inputImage"
-    value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg" />
-  
-    <button class="processButton">Analyze face</button><br><br> -->
+
     
   <div id="wrapper" style="width:1020px; display:table;">
     <div id="jsonOutput" style="width:600px; display:table-cell;">
