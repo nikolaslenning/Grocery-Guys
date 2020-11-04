@@ -1,64 +1,78 @@
- 
+  <div class="mb-4 container-fluid">
+    <div class="row pt-4 pb-4">
+      <div class="col"></div>
+      <div class="col bubble ">
+        <h1>Welcome, <span class="member-name"></span></h1>
+      </div>
+      <div class="col"></div>
+    </div>
 
-      <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/logout">
-          Logout
-        </a>
+      <div id="detectFaces" class="row border">
+        <div class="col border">
+          <div class="jumbotron jumbotron-fluid mt-2 mb-2" id="howTo">
+            <div class="container">
+              <h1 class="display-4" id="works">How it Works</h1>
+              <p class="lead left">
+                By choosing between a link or file, you can detect the emotions of a face and get it back as a
+                numerical value.
+                You can then look at your previously scanned images and compare and contrast
+                <a href="/api/emotes">Here.</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Face API code -->
+          <h1>Use a Link:</h1>
+          <p class="urlText">
+            Enter the URL to an image that includes a face or faces, then click
+            the <strong>Analyze face</strong> button.
+          </p>
+
+          <form method="POST" action="/api/url">
+            <input type="text" id="url" name="url"
+              value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg" />
+            <button class="btn btn-info" type="submit">Analyze Face</button>
+          </form>
+
+          <h1 class="mt-2 mb-2">OR</h1>
+
+          <!-- This is for choosing the file -->
+          <!-- https://gist.github.com/bmcbride/7577e6aed5ce962776ca -->
+
+          <h1 class="mb-3">Upload a File</h1>
+          <!-- https://medium.com/@nitinpatel_20236/image-upload-via-nodejs-server-3fe7d3faa642 -->
+          <form class="pb-3 mb-4" action="/api/upload" method="POST" enctype="multipart/form-data">
+            <input class="uploadFile" type="file" accept="image/*" name="photo">
+            <input class="btn btn-info fileButton" type="submit" value="Upload File">
+          </form>
+          <div class='imgBody'></div>
+        </div>
+
+        <div class="col border">
+          <!-- response -->
+          <div id="imageDiv">
+            <h2 class="mt-3 mb-3">Source Image:</h2>
+            <img id="sourceImage" class="img-fluid" src= {{url}} />
+          </div>
+          <div id="jsonOutput">
+            <h2 class="mt-3 mb-3">Response:</h2>
+            <textarea id="responseTextArea" class="UIInput mb-4" style="width:20rem; height:20rem;">
+Face Analysis:
+Anger: {{anger}}
+Contempt: {{contempt}}
+Disgust: {{disgust}}
+Fear: {{fear}}
+Happiness: {{happiness}}
+Neutral: {{neutral}}
+Sadness: {{sadness}}
+Surprise: {{surprise}}
+            </textarea>
+          </div>
+        </div>
+        <!-- This was moved out of the wrapper div -->
       </div>
     </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
-      </div>
-    </div>
+
   </div>
-
-
-  <h1>Upload Image to Backend/IMGUR</h1>
-  <!-- https://medium.com/@nitinpatel_20236/image-upload-via-nodejs-server-3fe7d3faa642 -->
- <form action="/api/upload" method="POST" enctype="multipart/form-data">
-         <input type="file" accept="image/*" name="photo" >
-         <input type="submit" value="upload">
- </form>
-<div class='imgBody'></div> 
-  
-<!-- https://stackoverflow.com/questions/44852297/pass-user-input-from-front-end-to-back-end-in-node-express -->
-  <form method="POST" action="/api/url">
-    <input type="text" id="url" name="url" value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg"/>
-    <button type="submit">Analyze Face</button>
- </form>
-
-  <!-- Face API code -->
-  <h1>Detect Faces:</h1>
-
-  Enter the URL to an image that includes a face or faces, then click
-  the <strong>Analyze face</strong> button.<br><br>
-  Image to analyze:
-
-    
-  <div id="wrapper" style="width:1020px; display:table;">
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
-      Response:<br><br>
-      <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;">
-      Face Analysis:
-      Anger: {{anger}}
-      Contempt: {{contempt}}
-      Disgust: {{disgust}}
-      Fear: {{fear}}
-      Happiness: {{happiness}}
-      Neutral: {{neutral}}
-      Sadness: {{sadness}}
-      Surprise: {{surprise}}
-      </textarea>
-    </div>
-
-    <div id="imageDiv" style="width:420px; display:table-cell;">
-      Source image:<br><br>
-      <img id="sourceImage" width="400" src = {{url}}></img>
-      
-    </div>
   </div>
