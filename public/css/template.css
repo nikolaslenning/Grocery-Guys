@@ -1,0 +1,156 @@
+html{
+    background-color: #e8cda0 !important;
+    color: white;
+}
+
+body{
+    background-color: #e8cda0;
+    color: white;
+
+}
+
+*{
+    /* background-color: #e8cda0 !important; */
+    text-align: center;
+}
+
+.topper{
+    background-color: #6d9dab !important;
+    border-bottom: 0.3rem solid white;
+}
+
+#detectFaces{
+    background-color: #6d9dab !important;
+
+}
+
+#howTo{
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    color: rgb(78, 76, 76);
+    border-radius: 1rem;
+    border-style: solid;
+    background-color: #edc1a4;
+    border-color: white;
+    border-width: 0.2rem;
+
+}
+
+.left{
+    font-weight: 400;
+}
+
+#works{
+    text-decoration: underline;
+}
+
+.bubble{
+    border-radius: 1rem;
+    border-style: solid;
+    background-color: #edc1a4;
+    border-color: white;
+    border-width: 0.2rem;
+}
+
+.out{
+    color:  #fd9c0a;
+}
+#url{
+    width: 21rem;
+    padding-top: 0.08rem;
+    padding-bottom: 0.3rem;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background-color: white;
+    border-style: solid;
+    border-color: rgb(223, 220, 220);
+    margin-right: -0.28rem;
+}
+
+.urlText{
+    font-size: large;
+}
+
+button{
+    background-color: rgba(35, 38, 233, 0.548) !important;
+}
+
+.fileButton{
+    width: 7.3rem;
+    background-color: rgba(35, 38, 233, 0.548) !important;
+    color: white;
+}
+
+#navbarDropdown{
+    font-size: 1.5rem;
+}
+
+.logout{
+    font-size: 1.5rem;
+}
+
+.uploadFile{
+    color: black;
+    width: 21rem;
+    padding-top: 0.01rem;
+    padding-bottom: 0.15rem;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background-color: white;
+    border-style: solid;
+    border-color: rgb(223, 220, 220);
+    margin-right: -0.28rem;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #navImage{
+    width: 10rem;
+  }
+
+  h1{
+    text-align: center;
+  }
+
+  .uploadBorder{
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 4px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 4px;
+      background-color: white;
+      margin-bottom: 2rem;
+  }
+
+  #file-upload-button{
+      background-color: green;
+  }
+
+  #responseTextArea{
+    text-align: left;
+}
+
+#sourceImage{
+    border-radius: 0.5rem;
+}
+
+#responseTextArea{
+    text-align: left;
+    color: whitesmoke;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+    background-color: #497785;
+}
+
+#navbarDropdown{
+    font-family: 'BenchNine', sans-serif;
+    font-size: 2rem;
+  }
