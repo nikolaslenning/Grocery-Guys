@@ -94,6 +94,7 @@ button{
 }
 
 .uploadFile{
+    color: black;
     width: 21rem;
     padding-top: 0.01rem;
     padding-bottom: 0.15rem;
