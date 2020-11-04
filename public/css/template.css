@@ -14,6 +14,10 @@ body{
     text-align: center;
 }
 
+p{
+    color: white;
+}
+
 .topper{
     background-color: #6d9dab !important;
     border-bottom: 0.3rem solid white;
@@ -27,7 +31,6 @@ body{
 #howTo{
     padding-top: 32px;
     padding-bottom: 32px;
-
     color: rgb(78, 76, 76);
     border-radius: 1rem;
     border-style: solid;
@@ -39,6 +42,7 @@ body{
 
 .left{
     font-weight: 400;
+    color: white;
 }
 
 #works{
@@ -154,3 +158,11 @@ button{
     font-family: 'BenchNine', sans-serif;
     font-size: 2rem;
   }
+
+.imageRound{
+    border-radius: 0.5rem;
+}
+
+.card{
+    background-color:  #6d9dab !important;
+}
