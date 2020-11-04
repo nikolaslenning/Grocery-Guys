@@ -121,6 +121,10 @@ button{
     width: 10rem;
   }
 
+  #navImage{
+    /* width: 50rem; */
+  }
+
   h1{
     text-align: center;
   }
