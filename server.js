@@ -1,3 +1,5 @@
+//Require in dotenv
+require('dotenv').config();
 // Requiring necessary npm packages
 var express = require("express");
 var session = require("express-session");
@@ -8,7 +10,6 @@ var passport = require("./config/passport");
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8000;
 var db = require("./models");
-
 
 // Creating express app and configuring middleware needed for authentication
 var app = express();
@@ -30,7 +31,7 @@ app.set("view engine", "handlebars");
 // Requiring our routes
 require("./routes/user-html-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
-// require("./routes/imgur-html-routes.js")(app);
+require("./routes/imgur-html-routes.js")(app);
 require("./routes/imgur-api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
