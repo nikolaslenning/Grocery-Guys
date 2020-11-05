@@ -1,20 +1,28 @@
+<a class="navbar-scale">
+  <img src="/img/EmoteScaleCropped.png" class="img-fluid align-top center" id="navScale" alt="Logo"
+    loading="lazy">
+</a>
+
 <div class="container-sm mt-4 mb-4">
+  <div class="row mt-4 mb-4">
     {{#each emotes}}
-  <div class="card-deck pb-2 pt-2 mt-4 mb-4">
-    <div class="card">
-      <img src={{url}} alt="Associated Emote IMG" class="card-img-top imageRound"></img>
-      <div class="card-body">
-        <p class="card-text">Anger: {{anger}}</p>
-        <p class="card-text">Contempt: {{contempt}}</p>
-        <p class="card-text">Disgust: {{disgust}}</p>
-        <p class="card-text">Fear: {{fear}}</p>
-        <p class="card-text">Happiness: {{happiness}}</p>
-        <p class="card-text">Neutral: {{neutral}}</p>
-        <p class="card-text">Sadness: {{sadness}}</p>
-        <p class="card-text">Surprise: {{surprise}}</p>
+    <div class="card-deck col-lg-4 col-md-6 col-sm-12 pb-2 pt-2 mt-4 mb-4">
+      <div class="card">
+        <img src={{url}} alt="Associated Emote IMG" class="card-img-top imageRound"></img>
+        <div class="card-body">
+          <p class="card-text">Anger: {{anger}}</p>
+          <p class="card-text">Contempt: {{contempt}}</p>
+          <p class="card-text">Disgust: {{disgust}}</p>
+          <p class="card-text">Fear: {{fear}}</p>
+          <p class="card-text">Happiness: {{happiness}}</p>
+          <p class="card-text">Neutral: {{neutral}}</p>
+          <p class="card-text">Sadness: {{sadness}}</p>
+          <p class="card-text">Surprise: {{surprise}}</p>
+        </div>
+        <button data-planid="{{this.id}}" data-deletehash="{{this.deleteHash}}" class="delplan btn btn-info">Delete
+          Emote!</button>
       </div>
-      <button data-planid="{{this.id}}" data-deletehash="{{this.deleteHash}}" class="delplan btn btn-info">Delete Emote!</button>
     </div>
-  </div>
     {{/each}}
+  </div>
 </div>
