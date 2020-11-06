@@ -61,3 +61,7 @@ a{
     padding-top: 5px;
     padding-bottom: 16px;
 }
+
+.roundBorder{
+    border-radius: 4px;
+  }

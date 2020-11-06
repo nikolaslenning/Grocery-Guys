@@ -153,3 +153,7 @@ button{
     font-family: 'BenchNine', sans-serif;
     font-size: 2rem;
   }
+
+  .roundBorder{
+    border-radius: 4px;
+  }
