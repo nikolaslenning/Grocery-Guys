@@ -44,6 +44,7 @@ body{
 
 #works{
     text-decoration: underline;
+    color: white;
 }
 
 .bubble{
@@ -151,4 +152,8 @@ button{
   #navbarDropdown{
     font-family: 'BenchNine', sans-serif;
     font-size: 2rem;
+  }
+
+  .roundBorder{
+    border-radius: 4px;
   }

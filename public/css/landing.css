@@ -24,12 +24,11 @@ body{
     text-align: center;
     font-size: 3.5rem;
     font-family: 'BenchNine', sans-serif;
-
+    border-radius: 4px;
 }
 
 .alertHeader{
     text-align: center;
-    /* font-family: 'BenchNine', sans-serif; */
 }
 
 a{
@@ -41,7 +40,7 @@ a{
     border-style: solid;
     border-color: rgb(255, 255, 255) !important;
     color: white; 
-
+    border-radius: 4px;
 }
 
 #mission{
@@ -62,3 +61,7 @@ a{
     padding-top: 5px;
     padding-bottom: 16px;
 }
+
+.roundBorder{
+    border-radius: 4px;
+  }
