@@ -54,6 +54,7 @@ button {
     border-color: white;
     border-width: 0.2rem;
 }
+<<<<<<< HEAD
 
 h1 {
     text-align: center;
@@ -68,11 +69,28 @@ html {
     border-radius: 0.5rem;
 }
 
+=======
+
+h1 {
+    text-align: center;
+}
+
+html {
+    background-color: #e8cda0 !important;
+    color: white;
+}
+
+.imageRound {
+    border-radius: 0.5rem;
+}
+
+>>>>>>> 157aa9cd69993c3d9d1bd1408f2ed0dd76833416
 .left {
     font-weight: 400;
     color: white;
 }
 
+<<<<<<< HEAD
 #works{
     text-decoration: underline;
     color: white;
@@ -82,6 +100,25 @@ html {
     width: 10rem;
 }
 
+=======
+.logout {
+    font-size: 1.5rem;
+}
+
+#navbarDropdown {
+    font-size: 1.5rem;
+}
+
+#navbarDropdown {
+    font-family: 'BenchNine', sans-serif;
+    font-size: 2rem;
+}
+
+#navImage {
+    width: 10rem;
+}
+
+>>>>>>> 157aa9cd69993c3d9d1bd1408f2ed0dd76833416
 .out {
     color: #fd9c0a;
 }
@@ -155,8 +192,12 @@ p {
     border-top-right-radius: 4px;
     background-color: white;
     margin-bottom: 2rem;
+<<<<<<< HEAD
 }
 
 .roundBorder{
     border-radius: 4px;
   }
+=======
+}
+>>>>>>> 157aa9cd69993c3d9d1bd1408f2ed0dd76833416
