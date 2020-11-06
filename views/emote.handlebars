@@ -18,19 +18,17 @@
             <div class="container">
               <h1 class="display-4" id="works">How it Works</h1>
               <p class="lead left">
-                By choosing between a link or file, you can detect the emotions of a face and get it back as a
-                numerical value.
-                You can then look at your previously scanned images and compare and contrast
+                Run a facial analysis on either a file or URL to assess the numberical value of the emotions being displayed. Then view previously scanned Emotes to compare and contrast
                 <a href="/api/emotes">Here.</a>
               </p>
             </div>
           </div>
 
           <!-- Face API code -->
-          <h1>Use a Link:</h1>
+          <h1>Use Link:</h1>
           <p class="urlText">
-            Enter the URL to an image that includes a face or faces, then click
-            the <strong>Analyze face</strong> button.
+            Enter image URL that includes a face, then click
+            <strong>Analyze Face</strong> button.
           </p>
 
           <form method="POST" action="/api/url">
@@ -39,12 +37,12 @@
             <button class="btn btn-info" type="submit">Analyze Face</button>
           </form>
 
-          <h2 class="mt-2 mb-2">OR</h2>
+          <h3 class="mt-2 mb-2">OR</h3>
 
           <!-- This is for choosing the file -->
           <!-- https://gist.github.com/bmcbride/7577e6aed5ce962776ca -->
 
-          <h1 class="mb-3">Upload a File</h1>
+          <h1 class="mb-3">Upload File:</h1>
           <!-- https://medium.com/@nitinpatel_20236/image-upload-via-nodejs-server-3fe7d3faa642 -->
           <form class="pb-3 mb-4" action="/api/upload" method="POST" enctype="multipart/form-data">
             <input class="uploadFile" type="file" accept="image/*" name="photo">
