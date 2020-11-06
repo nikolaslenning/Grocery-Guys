@@ -5,7 +5,7 @@
 Link to deployed site: [Grocery Guys](https://intense-chamber-80785.herokuapp.com)
 
 ## Description
-An application geared towards assisting the Autism Community that allows the user to view uploaded images and have them analyzed to return numerical data identifying the socially-perceived emotions found within the image. The user can also view previously anazlyed images to use as a reference for future use.
+An application geared towards assisting the Autism Community that allows the user to view uploaded images and have them analyzed to return numerical data identifying the socially-perceived emotions found within the image. The user can also view previously analyzed images to use as a reference for future use.
 
 ## How it works
     1. The user can sign up or log in using authenticated emails and passwords
