@@ -2,24 +2,24 @@ require('dotenv').config();
 
 module.exports = {
   "development": {
-    "username": "g52xxutygny5zm54",
-    "password": "yndp743z1m6c62e4",
-    "database": "fen9jqt66zb9zb0z",
-    "host": "s9xpbd61ok2i7drv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "username": process.env.USERNAME,
+    "password": process.env.PWORD,
+    "database": process.env.DATABASE,
+    "host": process.env.HOST,
+    "dialect": process.env.DIALECT
   },
   "test": {
-    "username": "g52xxutygny5zm54",
-    "password": "yndp743z1m6c62e4",
-    "database": "fen9jqt66zb9zb0z",
-    "host": "s9xpbd61ok2i7drv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "username": process.env.USERNAME,
+    "password": process.env.PWORD,
+    "database": process.env.DATABASE,
+    "host": process.env.HOST,
+    "dialect": process.env.DIALECT
   },
   "production": {
-    "username": "g52xxutygny5zm54",
-    "password": "yndp743z1m6c62e4",
-    "database": "fen9jqt66zb9zb0z",
-    "host": "s9xpbd61ok2i7drv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "username": process.env.USERNAME,
+    "password": process.env.PWORD,
+    "database": process.env.DATABASE,
+    "host": process.env.HOST,
+    "dialect": process.env.DIALECT
   }
 };
