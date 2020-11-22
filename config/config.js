@@ -1,4 +1,6 @@
-{
+require('dotenv').config();
+
+module.exports = {
   "development": {
     "username": "g52xxutygny5zm54",
     "password": "yndp743z1m6c62e4",
@@ -20,4 +22,4 @@
     "host": "s9xpbd61ok2i7drv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
-}
+};
