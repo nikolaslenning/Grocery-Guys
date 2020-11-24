@@ -79,10 +79,6 @@ let controller = {
         id: user
       }
     });
-  },
-
-  deleteIMGUR: function(deleteHash) {
-    return imgur.deleteImage(deleteHash);
   }
 };
 
