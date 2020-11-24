@@ -1,5 +1,5 @@
 const Controller = require("../controller/index.js");
-var db = require("../models");
+// var db = require("../models");
 var imgur = require('imgur');
 
 module.exports = function (app) {
