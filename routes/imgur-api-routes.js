@@ -1,4 +1,6 @@
 const Controller = require("../controller/index.js");
+var db = require("../models");
+var imgur = require('imgur');
 
 module.exports = function (app) {
   // Find all Emotes and return them to the user with res.json
@@ -58,7 +60,7 @@ module.exports = function (app) {
   // eslint-disable-next-line no-unused-vars
   app.delete("/api/delete/:deleteHash", function (req, res) {
 
-    Controller.deleteIMGUR(req.params.deleteHash).then(function(status) {
+    imgur.deleteImage(req.params.deleteHash).then(function(status) {
       console.log(status);
     })
       .catch(function(err) {
