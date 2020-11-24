@@ -1,6 +1,6 @@
-var db = require("../models");
-var { Op } = require("sequelize");
-var imgur = require('imgur');
+// var db = require("../models");
+// var { Op } = require("sequelize");
+// var imgur = require('imgur');
 const Controller = require("../controller/index.js");
 
 module.exports = function (app) {
@@ -78,11 +78,12 @@ module.exports = function (app) {
 
   app.delete("/api/emotes/:id", function (req, res) {
     // Delete the Emote with the id available to us in req.params.id
-    db.Emote.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function (dbEmote) {
+    // db.Emote.destroy({
+    //   where: {
+    //     id: req.params.id
+    //   }
+    // })
+    Controller.delete(req.params.id).then(function (dbEmote) {
       res.json(dbEmote);
     });
   });
@@ -90,10 +91,10 @@ module.exports = function (app) {
   // eslint-disable-next-line no-unused-vars
   app.delete("/api/delete/:deleteHash", function (req, res) {
     // Delete the Emote with the id available to us in req.params.id
-    imgur.deleteImage(req.params.deleteHash)
-      .then(function(status) {
-        console.log(status);
-      })
+    // imgur.deleteImage(req.params.deleteHash)
+    Controller.deleteIMGUR(req.params.deleteHash).then(function(status) {
+      console.log(status);
+    })
       .catch(function(err) {
         console.error(err.message);
       });

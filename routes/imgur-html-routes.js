@@ -1,4 +1,3 @@
-var db = require("../models");
 const multer = require('multer');
 const ImgurStorage = require('multer-storage-imgur');
 const upload = multer({

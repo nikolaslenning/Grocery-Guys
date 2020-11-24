@@ -2,6 +2,7 @@
 const { FaceClient, FaceModels } = require("@azure/cognitiveservices-face");
 const { CognitiveServicesCredentials } = require("@azure/ms-rest-azure-js");
 var db = require("../models");
+var imgur = require('imgur');
 
 let controller = {
   // https://www.npmjs.com/package/@azure/cognitiveservices-face
@@ -71,6 +72,18 @@ let controller = {
       }
     });
   },
+
+  delete: function(user) {
+    return db.Emote.destroy({
+      where: {
+        id: user
+      }
+    });
+  },
+
+  deleteIMGUR: function(deleteHash) {
+    return imgur.deleteImage(deleteHash);
+  }
 
 
 
