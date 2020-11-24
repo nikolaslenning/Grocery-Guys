@@ -2,6 +2,7 @@
 const { FaceClient, FaceModels } = require("@azure/cognitiveservices-face");
 const { CognitiveServicesCredentials } = require("@azure/ms-rest-azure-js");
 var db = require("../models");
+var { Op } = require("sequelize");
 
 let controller = {
   // https://www.npmjs.com/package/@azure/cognitiveservices-face
