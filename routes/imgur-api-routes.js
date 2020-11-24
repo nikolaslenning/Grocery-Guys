@@ -37,7 +37,7 @@ module.exports = function (app) {
     })
       .catch(function (err) {
         console.log(err);
-        // res.status(404).end();
+        res.status(404).end();
       });
   });
 
