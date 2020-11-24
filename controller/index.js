@@ -84,10 +84,6 @@ let controller = {
   deleteIMGUR: function(deleteHash) {
     return imgur.deleteImage(deleteHash);
   }
-
-
-
 };
-
 
 module.exports = controller;
