@@ -1,15 +1,17 @@
 var db = require("../models");
 var { Op } = require("sequelize");
 var imgur = require('imgur');
+const Controller = require("../controller/index.js");
 
 module.exports = function (app) {
   // Find all Emotes and return them to the user with res.json
   app.get("/api/emotes", function (req, res) {
-    db.Emote.findAll({
-      where: {
-        UserId: req.user.id
-      }
-    }).then(function (dbEmote) {
+    // db.Emote.findAll({
+    //   where: {
+    //     UserId: req.user.id
+    //   }
+    // })
+    Controller.getAll(req.user.id).then(function (dbEmote) {
 
       let data = {
         emotes: []
@@ -25,14 +27,15 @@ module.exports = function (app) {
   });
 
   app.get("/api/emotes/:emotion", function (req, res) {
-    db.Emote.findAll({
-      where: {
-        UserId: req.user.id,
-        [req.params.emotion]: {
-          [Op.gt]: .5
-        }
-      }
-    }).then(function (dbEmote) {
+    // db.Emote.findAll({
+    //   where: {
+    //     UserId: req.user.id,
+    //     [req.params.emotion]: {
+    //       [Op.gt]: .5
+    //     }
+    //   }
+    // })
+    Controller.getEmotion(req.params.emotion, req.user.id).then(function (dbEmote) {
       let data = {
         emotes: []
       };
@@ -54,20 +57,21 @@ module.exports = function (app) {
     // Create a variable with the data available to us in req.body
     let emote = req.body;
 
-    db.Emote.create({
-      url: emote.url,
-      anger: parseFloat(emote.anger),
-      contempt: parseFloat(emote.contempt),
-      disgust: parseFloat(emote.disgust),
-      fear: parseFloat(emote.fear),
-      happiness: parseFloat(emote.happiness),
-      neutral: parseFloat(emote.neutral),
-      sadness: parseFloat(emote.sadness),
-      surprise: parseFloat(emote.surprise),
-      UserId: req.user.id,
-      deleteHash: emote.deleteHash
+    // db.Emote.create({
+    //   url: emote.url,
+    //   anger: parseFloat(emote.anger),
+    //   contempt: parseFloat(emote.contempt),
+    //   disgust: parseFloat(emote.disgust),
+    //   fear: parseFloat(emote.fear),
+    //   happiness: parseFloat(emote.happiness),
+    //   neutral: parseFloat(emote.neutral),
+    //   sadness: parseFloat(emote.sadness),
+    //   surprise: parseFloat(emote.surprise),
+    //   UserId: req.user.id,
+    //   deleteHash: emote.deleteHash
 
-    }).then(function (dbEmote) {
+    // })
+    Controller.create(emote, req.user.id).then(function (dbEmote) {
       res.json(dbEmote);
     });
   });
