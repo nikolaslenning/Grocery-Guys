@@ -1,3 +1,4 @@
+// https://stackoverflow.com/questions/38757728/using-an-enviroment-variable-for-local-sequelize-configuration
 require('dotenv').config();
 
 module.exports = {
